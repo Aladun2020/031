@@ -1,0 +1,10 @@
+Vagrant.configure(2) do |config|
+config.vm.network "forwarded_port", guest: 3301, host: 3301
+  config.vm.box = "ubuntu/bionic64"
+  # Install Docker
+  config.vm.provision "docker" do |d|
+d.build_image "/db/Dockerfile1"
+d.build_image "/wp/Dockerfile2"
+
+end
+end
